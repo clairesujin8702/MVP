@@ -1,57 +1,70 @@
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
+import Payment from './payment.jsx';
+import Favorite from './favorite.jsx';
+import WishList from './wishList.jsx';
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      list : []
-     }
+      list: []
+    };
   }
 
-  componentDidMount(){
-    this.getData()
+  componentDidMount() {
+    this.getData();
   }
 
-  getData(data){
-    axios.get('/test', {params : { name : data }})
+  getData(data) {
+    axios.get('/search', {params: { name: data }})
       .then(res=> {
-        this.setState({ list : res.data })
-        console.log("this.state.list", this.state.list)} )
-      .catch(err=> console.log(err) )
+        this.setState({ list: res.data });
+        console.log('this.state.list', this.state.list);
+      } )
+      .catch(err=> console.log(err) );
   }
 
-  postData(data){
-    let info = {}
-    axios.post('/test', info)
+  postData(data) {
+    let info = {};
+    axios.post('/payment', info)
       .then(()=> this.getData() )
-      .catch(err=> console.log(err) )
+      .catch(err=> console.log(err) );
   }
 
-  updateData(name){
-    let info = {}
-    axios.put(`/test/${name}`, info)
+  updateData(name) {
+    let info = {};
+    axios.put(`/payment/${name}`, info)
       .then(()=>this.getData())
-      .catch(err=>console.log(err))
+      .catch(err=>console.log(err));
   }
 
-  deleteData(name){
-    let info = {}
-    axios.delete(`/test/${name}`, info)
+  deleteData(name) {
+    let info = {};
+    axios.delete(`/Payment/${name}`, info)
       .then(()=> this.getData() )
-      .catch(err => console.log(err) )
+      .catch(err => console.log(err) );
   }
 
   render() {
-    const { name } = this.props;
     return (
-      <div>
-        <h1>
-          Hello {name}
-        </h1>
+      <div className="container">
+        <div className="pContainer">
+          <h1 className="title">Current Status</h1>
+          <Payment />
+        </div>
+        <div className="fContainer">
+          <h1 className="title">Favorite Places</h1>
+          <Favorite />
+        </div>
+        <div className="wContainer">
+          <h1 className="title">Wish List</h1>
+          <WishList />
+        </div>
       </div>
     );
   }
 }
 
 export default App;
+

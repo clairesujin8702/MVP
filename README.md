@@ -1,11 +1,14 @@
 # MVP
-Project to build a Minimum Viable Product
+Project to build a Minimum Viable Product for 2days
 
-## Overview 
-Overview MVPproduct
+## Overview
+Overview MVP product
 
 ## Technologies
-For this project, I used the following languages and frameworks in our implementation:
+For this project, I used the following languages and frameworks in my implementation:
+- Javascript
+- react
+- axios
 - Node.js
 - Express
 - MongoDB
@@ -19,5 +22,3 @@ For this project, I used the following languages and frameworks in our implement
   3. run ```npm run build-dev```
   4. run ```npm start```
   5. find the site on ***localhost:2000***
-
-# MVP

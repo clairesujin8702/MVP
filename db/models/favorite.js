@@ -10,18 +10,18 @@ var fSchema = mongoose.Schema({
 var Favorites = mongoose.model('Favorites', fSchema);
 
 const dbMethods = {
-  readAll:()=>{
-    return Favorites.find().sort("date : 1").limit(20).exec()
+  readAll: ()=>{
+    return Favorites.find().sort('date : 1').limit(20).exec();
   },
-  readOne:( id )=>{
-    return Favorites.findOne({ favoriteId : id }).exec();
+  readOne: ( id )=>{
+    return Favorites.findOne({ favoriteId: id }).exec();
   },
-  create : ( one ) => {
+  create: ( one ) => {
     return Favorites.create({
 
     });
   },
-  update :( one )=>{
+  update: ( one )=>{
     return Favorites.updateMany(
       {
 
@@ -33,8 +33,8 @@ const dbMethods = {
         upsert: true
       });
   },
-  deleteOne:( id )=>{
-    return Favorites.deleteOne( { favoriteId : id })
+  deleteOne: ( id )=>{
+    return Favorites.deleteOne( { favoriteId: id });
   },
 };
 

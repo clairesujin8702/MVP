@@ -10,18 +10,18 @@ var wSchema = mongoose.Schema({
 var WishLists = mongoose.model('WishLists', wSchema);
 
 const dbMethods = {
-  readAll:()=>{
-    return WishLists.find().sort("date : 1").limit(20).exec()
+  readAll: ()=>{
+    return WishLists.find().sort('date : 1').limit(20).exec();
   },
-  readOne:( id )=>{
-    return WishLists.findOne({ wishListId : id }).exec();
+  readOne: ( id )=>{
+    return WishLists.findOne({ wishListId: id }).exec();
   },
-  create : ( one ) => {
+  create: ( one ) => {
     return WishLists.create({
 
     });
   },
-  update :( one )=>{
+  update: ( one )=>{
     return WishLists.updateMany(
       {
 
@@ -33,8 +33,8 @@ const dbMethods = {
         upsert: true
       });
   },
-  deleteOne:( id )=>{
-    return WishLists.deleteOne( { wishListId : id })
+  deleteOne: ( id )=>{
+    return WishLists.deleteOne( { wishListId: id });
   },
 };
 

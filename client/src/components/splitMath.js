@@ -1,12 +1,12 @@
 module.exports = {
-  food:()=>{
+  food: ()=>{
   },
-  drinks:()=>{
+  drinks: ()=>{
   },
-  share:()=>{
+  share: ()=>{
   },
-  tip:()=>{
+  tip: ()=>{
   },
-  tax:()=>{
+  tax: ()=>{
   },
 };

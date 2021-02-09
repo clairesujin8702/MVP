@@ -57,3 +57,11 @@ small {
   margin: 0 auto;
   display: block
 }
+
+.rentList {
+color: red
+}
+
+.borrowList {
+  color: rgb(0, 3, 155)
+}
