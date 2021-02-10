@@ -8,12 +8,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: []
+      view: 'home',
+      favoriteList: [],
+      wishList: [],
     };
+    this.changeView = this.changeView.bind(this);
   }
 
   componentDidMount() {
-    this.getData();
+    // this.getData();
   }
 
   getData(data) {
@@ -46,22 +49,79 @@ class App extends React.Component {
       .catch(err => console.log(err) );
   }
 
+  changeView( viewName ) {
+    console.log(viewName);
+    this.setState({
+      view: viewName,
+    });
+    // this.renderView();
+  }
+
   render() {
-    return (
-      <div className="container">
+
+    let paymentView = '';
+
+    if (this.state.view === 'rent') {
+      return paymentView = (<RentList rentHistory={this.state.rentHistory} />);
+
+    } else if ( this.state.view === 'borrow' ) {
+      return paymentView = (<BorrowList borrowHistory={ this.state.borrowHistory }/>);
+
+    } else if ( this.state.view === 'search' ) {
+      return paymentView = (<FindPlaces />);
+
+    } else if ( this.state.view === 'pay' ) {
+      paymentView = (<Payment />);
+
+    } else if ( this.state.view === 'favorite' ) {
+      paymentView = (<Favorite />);
+
+    } else if ( this.state.view === 'wish' ) {
+      paymentView = (<WishList />);
+
+    } else if (this.state.view === 'home') {
+      paymentView = <>
         <div className="pContainer">
-          <h1 className="title">Current Status</h1>
+          <h2 className="title">CURRENT STATUS</h2>
           <Payment />
         </div>
         <div className="fContainer">
-          <h1 className="title">Favorite Places</h1>
-          <Favorite />
+          <h2 className="title">FAVORITE PLACES</h2>
+          <h3 className ="placeHolder">
+            <Favorite favoriteList={this.state.favoriteList} />
+          </h3>
         </div>
         <div className="wContainer">
-          <h1 className="title">Wish List</h1>
-          <WishList />
+          <h2 className="title">WISH LIST</h2>
+          <h3 className ="placeHolder">
+            <WishList favoriteList={this.state.wishList} />
+          </h3>
         </div>
-      </div>
+      </>;
+    }
+
+    return (
+      <>
+        <div className="header">
+          <h1>SPLIT BILL APP</h1>
+          <p>hang out <b>more</b> but life <b>simpler</b> </p>
+        </div>
+        <div className="navbar">
+          <a href="#" className="active" onClick={()=>this.changeView('home') }>HOME</a>
+          <a href="#"onClick={()=>this.changeView('pay')}>PAYMENT</a>
+          <a href="#" onClick={()=>this.changeView('favorite')}>FAVORITE</a>
+          <a href="#" onClick={()=>this.changeView('wish')}>WISH</a>
+          <a href="#" className="right" onClick={()=>this.changeView('login') } >LOGIN</a>
+        </div>
+
+        { paymentView }
+
+        <div className="footer">
+          <i><span>SUSU INC.</span><br />
+            <small>all profit will be donated to Claire Sujin Kim</small>
+          </i>
+        </div>
+      </>
     );
   }
 }

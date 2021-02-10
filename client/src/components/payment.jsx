@@ -1,41 +1,77 @@
 import React from 'react';
-import FindPlace from './FindPlace.jsx';
+import RentList from './payment/RentList.jsx';
+import BorrowList from './payment/BorrowList.jsx';
+
+import FindPlaces from './FindPlace.jsx';
 
 class payment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      view: '',
       rentHistory: [],
       borrowHistory: []
     };
   }
 
   componentDidMount() {
-    this.getHistory();
+    // this.getHistory();
   }
 
   getHistory() {
   }
 
+  changeView( viewName ) {
+    console.log(viewName);
+    this.setState({
+      view: viewName,
+    });
+    // this.renderView();
+  }
+
+  handleClickChange( e ) {
+
+  }
+
   render() {
-    const rentList = !this.state.rentHistory ? null : this.state.rentHistory.map((renter, i)=>{
-      return (<li> {renter.name} have to pay {renter.money} to you from {renter.place}_ {renter.date} </li>);
-    });
-    const borrowList = !this.state.borrowHistory ? null : this.state.borrowHistory.map((borrower, i)=>{
-      return (<li> You have to pay {borrower.money} to {borrower.name} from {borrower.place}_ {borrower.date} </li>);
-    });
+    const myStyle = { width: '100%' };
+
     return (
-      <div>
-        <h2>Get Money Back</h2>
-        <ol className="rentList">
-          {rentList}
-        </ol>
-        <h2>Pay Back Now</h2>
-        <ol className="borrowList">
-          {borrowList}
-        </ol>
-        <FindPlaces />
-      </div>
+      <>
+        <div className="row1">
+
+          <div className="column">
+            <div className="pCard">
+              <img src="https://www.quackit.com/pix/samples/15l.jpg" alt="Jane" style={myStyle} />
+              <div className="container">
+                <h2>GET</h2>
+                <p><button className="button" onClick={()=>this.changeView('rent') }> Get rich </button></p>
+              </div>
+            </div>
+          </div>
+
+          <div className="column">
+            <div className="pCard">
+              <img src="https://www.quackit.com/pix/samples/16l.jpg" alt="Mike" style={myStyle} />
+              <div className="container">
+                <h2>PAY</h2>
+                <p><button className="button" onClick={()=>this.changeView('borrow') }> No more debt </button></p>
+              </div>
+            </div>
+          </div>
+
+          <div className="column">
+            <div className="pCard">
+              <img src="https://www.quackit.com/pix/samples/30m.jpg" alt="John" style={myStyle} />
+              <div className="container">
+                <h2>ADD</h2>
+                <p><button className="button" onClick={()=>this.changeView('search') }> Let's Calculate </button></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </>
     );
   }
 }

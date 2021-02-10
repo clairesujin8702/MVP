@@ -1,46 +1,158 @@
 html {
-  font-size: 10px;
+  font-size: 15px;
+}
+
+* {
   box-sizing: border-box;
 }
 
 body {
-  background-color: white;
+  background-color: rgb(242, 242, 242);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  padding: 0;
-}
-Div {
-  width: 500px;
 }
 
-h1 {
-text-align: center;
+.header {
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  background: rgb(0, 0, 0);
+}
+.header > h1 {
+  font-size: 50px;
 }
 
-p {
-  font-size: 1.6rem;
+.header > p {
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+}
+.footer {
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background: rgb(0, 0, 0);
+  margin-top: 20px;
+}
+
+.placeHolder {
+  padding: 100px;
+  text-align: center;
+  background: white;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom;: 20px
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
+}
+/* navbar setting */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  margin-bottom: 35px;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+.navbar a.right {
+  float: right;
+}
+.navbar a:hover {
+  background-color: rgba(216, 216, 216, 0.064);
+  color: rgb(255, 255, 255);
+}
+.navbar a.active {
+  background-color: #666;
+  color: white;
+}
+
+/* payment section */
+.column {
+  float: left;
+  width: 33.3%;
+  /* margin-top: 13px; */
+  margin-bottom: 13px;
+  padding: 0 5px;
+}
+.pCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.container {
+  padding: 0 13px;
+}
+.container::after, .row1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+.button:hover {
+  background-color: #555;
+}
+
+
+
+/* Responsive layout*/
+@media screen and (max-width: 700px) {
+  .row1 {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .prev,.next,.slideText {font-size: 11px}
+}
+/*____________________________________________________________________________________*/
+
+h2{
+  margin-left: 20px;
 }
 
 small {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
-.container {
+.sContainer {
   margin: 0 auto;
   max-width:1000px;
   padding: 40px;
 }
 
-.title {
-  font-size: 4.4rem;
+.sTitle {
+  font-size: 1.7rem;
   text-align: center
 }
 
-.card-list {
+.sCard-list {
   margin-top: 4rem;
 }
 
-.card {
+.sCard {
   padding: 2rem 4rem;
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
@@ -48,12 +160,12 @@ small {
   background-color: white;
 }
 
-.card--title {
+.sCard--title {
   margin-bottom: 0.5rem;
-  font-size: 3.2rem;
+  font-size: 1.4rem;
 }
 
-.card--image {
+.sCard--image {
   margin: 0 auto;
   display: block
 }
@@ -65,3 +177,5 @@ color: red
 .borrowList {
   color: rgb(0, 3, 155)
 }
+
+
