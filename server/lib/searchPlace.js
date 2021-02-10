@@ -117,9 +117,8 @@ let searchPlace = ( placeName, area, num, sort, priceLevel ) => {
 
   return yelpREST('/businesses/search', { params: {term: placeName, location: area, limit: num, sort_by: sort, price: priceLevel } })
     .then(res => {
-      console.log('res in search Placer_data:', res.data);
-      console.log('res in search Placer_businesses:', res.businesses);
-      return res.data;
+      // console.log('res in search Placer_businesses:', res.data.businesses);
+      return res.data.businesses;
     })
     .catch(err=> console.error(err));
 };

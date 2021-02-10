@@ -20,7 +20,10 @@ app.get('/search', (req, res)=>{
   let priceLevel = req.query.price || '1,2,3,4';
 
   searchPlace( placeName, area, num, sort, priceLevel )
-    .then(result => console.log(result) )
+    .then(result =>{
+      // console.log('searchPlace_result_server.js', result);
+      res.json( result );
+    } )
     .catch(err => console.log(err) );
 });
 

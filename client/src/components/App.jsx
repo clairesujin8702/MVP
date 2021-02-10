@@ -4,7 +4,7 @@ import Payment from './payment/payment.jsx';
 import RentList from './payment/rentList.jsx';
 import BorrowList from './payment/borrowList.jsx';
 import NewBill from './payment/newBill.jsx';
-import FindPlaces from './searchPlaces/findPlace.jsx';
+import FindPlaces from './searchPlaces/findPlaces.jsx';
 
 import Favorite from './favorite.jsx';
 import WishList from './wishList.jsx';
