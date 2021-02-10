@@ -105,6 +105,7 @@ body {
   text-align: center;
   cursor: pointer;
   width: 100%;
+  border-radius: 3px;
 }
 .button:hover {
   background-color: #555;
@@ -137,10 +138,60 @@ small {
   font-size: 0.8rem;
 }
 
+.newBillContainer {
+  margin-left: 20px;
+}
+.borrowContainer {
+  margin-left: 20px;
+}
+.rentContainer {
+  margin-left: 20px;
+}
+.favoriteContainer {
+  margin-left: 20px;
+}
+.wishlistContainer {
+  margin-left: 20px;
+}
+.loginContainer {
+  margin-left: 20px;
+}
 .sContainer {
   margin: 0 auto;
-  max-width:1000px;
-  padding: 40px;
+  max-width:600px;
+  padding: 20px;
+}
+.sForm {
+  display:grid;
+}
+
+.sLabel {
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.sInput {
+  font-size: 1.0rem;
+  padding: 0.1rem 0.7rem;
+  line-height: 2.8rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.sButton {
+  background-color: rgba(34, 25, 3, 0.75);
+  color: white;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(0,0,0,0.75);
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 250ms;
+}
+.sButton:hover {
+  background-color: rgba(34, 25, 3, 0.85);
 }
 
 .sTitle {

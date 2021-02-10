@@ -1,16 +1,18 @@
 import React from 'react';
 
-export default function RentList ( {rentHistory} ) {
+export default function RentList ( {list, rentHistory} ) {
   const rentList = !rentHistory ? null : rentHistory.map((renter, i)=>{
-    return (<li> {renter.name} have to pay {renter.money} to you from {renter.place}_ {renter.date} </li>);
+    return (<li> {renter.name} owes $ {renter.money} from {renter.place}_ {renter.date} </li>);
   });
 
   return (
-    <div>
-      <h2>Get Money Back</h2>
-      <p>Who is not paying you?</p>
+    <div className='rentContainer'>
+      <h3>Get money back</h3>
+      <p> Who owes me and how much? </p>
       <ol className="rentList">
         {rentList}
+        1. 'Test' owes you $ '5.00' from 'PLACE' _ 'DATE'   : √  detail delete
+        2. 'OK' owes you $ '100.00' from 'PLACE' _ 'DATE'   : √  detail delete
       </ol>
     </div>
   );

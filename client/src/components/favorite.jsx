@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Favorite ({ favoriteList }) {
   return (
-    <div>
-      <h3> images with description </h3>
+    <div className='favoriteContainer'>
+      <h3> favorite place images with description </h3>
     </div>
   );
 }
