@@ -20,7 +20,13 @@ module.exports = {
       });
   },
   put: (req, res) => {
-    console.log('wishList_Put', req.body);
+    console.log('wishList_Put', req.body.data);
+    update(req.body.data)
+      .then(()=> res.sendStatus(201))
+      .catch(( err ) => {
+        res.sendStatus(404);
+        console.error(err);
+      });
   },
   delete: (req, res) => {
     console.log('wishList_Delete', req.params.id);

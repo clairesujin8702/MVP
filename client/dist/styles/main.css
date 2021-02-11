@@ -40,11 +40,33 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   margin-left: 10px;
+  margin-top: 10px;
+}
+
+.title_small {
+  font-size: 17px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  margin-left: 10px;
   margin-top: 25px;
 }
 
+.title_temp {
+  font-size: 14px;
+  /* font-weight: bold; */
+  line-height: 1.6;
+  text-transform: uppercase;
+  margin-left: 10px;
+  margin-top: 25px;
+  padding-left:15px;
+}
+
 textarea {
-  resize: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	width: 100%;
 }
 
 button {
@@ -71,16 +93,6 @@ input {
   border: 1px solid #ddd;
 }
 
-/* .placeHolder {
-  padding: 100px;
-  text-align: center;
-  background: white;
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 20px;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
-} */
 /* navbar setting */
 .navbar {
   overflow: hidden;
@@ -88,7 +100,7 @@ input {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 .navbar a {
   float: left;
@@ -120,7 +132,7 @@ input {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin-left: 4px;
   margin-right: 4px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 .container {
   padding: 0 13px;
@@ -142,29 +154,27 @@ input {
   cursor: pointer;
   width: 100%;
   border-radius: 3px;
+  text-transform: uppercase;
 }
 .button:hover {
   background-color: #555;
 }
 
 .main_container {
-  /* border: 2px red; */
   margin-left: 20px;
   margin-right: 20px;
 }
 
 .favoriteContainer, .wishlistContainer{
-  /* border: 2px red; */
   border: 0.5px solid rgba(160, 160, 160, 0.481);
   padding-top: .7em;
   padding-bottom: .7em;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   overflow-x: scroll;
-  max-height: 400px;
+  max-height: 500px;
 }
 
 .responsive {
-  /* border: 2px red; */
   padding: 0 6px;
   float: left;
   width: 24.99999%;
@@ -172,7 +182,6 @@ input {
 }
 
 div .gallery {
-  /* border: 2px red; */
   border: 0.5px solid rgba(160, 160, 160, 0.481);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -184,7 +193,6 @@ div .gallery:hover {
 }
 
 div .gallery img {
-  /* border: 2px red; */
   max-width:350px;
   max-height:300px;
   width: 100%;
@@ -198,12 +206,13 @@ div .desc {
 }
 
 .photos_title{
-  border: 2px red;
   font-family: Arial;
   color: #666;
   font-weight: normal;
   font-size: 14px;
   text-align: right;
+  margin-left: 10px;
+  margin-bottom: 3px;
 }
 
 .photos_title:hover {
@@ -226,7 +235,7 @@ div .desc {
 @media only screen and (max-width: 300px) {
   .prev,.next,.slideText {font-size: 11px}
 }
-/*____________________________________________________________________________________*/
+/*__________________________________________________________*/
 .right{
   text-align: right;
 }
@@ -309,10 +318,15 @@ small {
 }
 
 .blueLink {
-  color: rgb(5, 8, 193);
+  color: rgb(0, 21, 255);
   text-decoration: underline;
   margin-top: 0%;
   margin-bottom: 0%;
+}
+
+.commnetText {
+  font-weight: 400;
+  color:rgb(15, 62, 119)
 }
 
 

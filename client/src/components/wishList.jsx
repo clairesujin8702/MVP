@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function WishList({ wishList, changeView, deleteData }) {
+export default function WishList({ wishList, changeView, deleteData, updateData, view }) {
   let wishListCard = wishList.map( wish => {
     return (
       <div className="responsive" key={'W' + wish.id}>
@@ -9,7 +9,15 @@ export default function WishList({ wishList, changeView, deleteData }) {
           <div className="desc">
             <small>
               <div className="right">
-                <div className="blueLink" onClick={()=>deleteData(wish.id, 'wishList')}>delete</div>
+                <span className="blueLink"
+                  onClick={()=>{
+                    updateData(wish.id, 'favorites', wish),
+                    deleteData(wish.id, 'wishList');
+                  }}>
+                    favorite</span>&nbsp;&nbsp;
+                <span className="blueLink"
+                  onClick={()=>deleteData(wish.id, 'wishList')}>
+                    delete</span>
               </div>
               <b>{wish.name}</b><br />
               {wish.location.display_address[0]}
@@ -17,14 +25,16 @@ export default function WishList({ wishList, changeView, deleteData }) {
               {wish.location.display_address[2]}<br />
               {wish.display_phone}
             </small><br /><br />
-            {wish.comment}
+            <div className="commnetText">{wish.comment}</div>
           </div>
         </div>
       </div>);
   });
+
+  let addMore = view === 'home' && <div className='photos_title' onClick={()=> changeView('search') }>&raquo; ADD MORE</div>;
   return (
     <div>
-      <div className='photos_title' onClick={()=> changeView('search') }>&raquo; ADD MORE</div>
+      {addMore}
       <div className="wishlistContainer">
         {wishListCard}
       </div>

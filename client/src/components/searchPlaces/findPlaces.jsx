@@ -83,8 +83,8 @@ class FindPlaces extends React.Component {
 
   render() {
     let advancedTitle = !this.state.advanceSearch &&
-    <><span className="blueLink"
-      onClick={(e) => this.handleClickChange(e, 'advanceSearch', true )}>&nbsp;&nbsp;Advanced search</span><br /></>;
+    <>&nbsp;&nbsp;<span className="blueLink"
+      onClick={(e) => this.handleClickChange(e, 'advanceSearch', true )}>Advanced search</span><br /></>;
 
     let advanceSearchOption = this.state.advanceSearch &&
       <><h3> Advanced search </h3>
@@ -159,6 +159,7 @@ class FindPlaces extends React.Component {
                 postPlace={this.postPlace}
                 comment={this.state.comment}
                 handleClickChange={this.handleClickChange}
+                view={this.props.view}
                 momHandleClickChange={this.props.momHandleClickChange} />
             ))}
           </div>
@@ -168,7 +169,6 @@ class FindPlaces extends React.Component {
     );
   }
 }
-
 
 export default FindPlaces;
 //https://source.unsplash.com/random/400x200"

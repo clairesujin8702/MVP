@@ -50,28 +50,29 @@ const dbMethods = {
     });
   },
   update: (one) => {
-    // return Favorites.updateMany(
-      // {
-      //   id: one.id
-      // },
-      // {
-      //   id: one.id,
-      //   name: one.name,
-      //   image_url: one.image_url,
-      //   is_closed: one.is_closed,
-      //   url: one.url,
-      //   review_count: onereview_count,
-      //   categories: one.categories,
-      //   rating: one.rating,
-      //   coordinates: one.coordinates,
-      //   price: one.price,
-      //   location: one.location,
-      //   display_phone: one.display_phone,
-      //   distance: one.distance
-      // },
-      // {
-      //   upsert: true
-      // });
+    return Favorites.updateMany(
+      {
+        id: one.id
+      },
+      {
+        id: one.id,
+        name: one.name,
+        image_url: one.image_url,
+        is_closed: one.is_closed,
+        url: one.url,
+        review_count: one.review_count,
+        categories: one.categories,
+        rating: one.rating,
+        coordinates: one.coordinates,
+        price: one.price,
+        location: one.location,
+        display_phone: one.display_phone,
+        distance: one.distance,
+        comment: one.comment
+      },
+      {
+        upsert: true
+      });
   },
   deleteOne: (id) => {
     return Favorites.deleteOne({ id: id });

@@ -30,6 +30,7 @@ class App extends React.Component {
     this.changeView = this.changeView.bind(this);
     this.deleteData = this.deleteData.bind(this);
     this.getPlaces = this.getPlaces.bind(this);
+    this.updateData = this.updateData.bind(this);
     // this.handleClickChange = this.handleClickChange(this);
   }
 
@@ -62,17 +63,17 @@ class App extends React.Component {
     //   .catch(err=> console.log(err) );
   }
 
-  updateData(name) {
-    // let info = {};
-    // axios.put(`/payment/${name}`, info)
-    //   .then(()=>this.getData())
-    //   .catch(err=>console.log(err));
+  updateData( id, endpoint, placeInfo ) {
+    console.log('updateData:', id, endpoint, placeInfo);
+    let info = { data: placeInfo};
+    axios.put(`/main/${endpoint}`, info)
+      .then(()=>this.getPlaces())
+      .catch(err=>console.log(err));
   }
 
-  deleteData( id, kind ) {
-    console.log('deleteData:', id, kind);
-
-    axios.delete(`/main/${kind}/${id}`)
+  deleteData( id, endpoint ) {
+    console.log('deleteData:', id, endpoint);
+    axios.delete(`/main/${endpoint}/${id}`)
       .then(()=> this.getPlaces() )
       .catch(err => console.log(err) );
   }
@@ -99,24 +100,33 @@ class App extends React.Component {
     } else if (this.state.view === 'borrow') {
       paymentView = <BorrowList borrowHistory={this.state.borrowHistory} />;
     } else if (this.state.view === 'new') {
-      paymentView = <NewBill />;
+      paymentView = <NewBill view={this.state.view}/>;
     } else if (this.state.view === 'pay') {
       paymentView = <><TotalSummary /><br />
         <Payment changeView={this.changeView} /></>;
     } else if (this.state.view === 'favorite') {
-      paymentView = <Favorite
-        favorites={this.state.favorites}
-        changeView={this.changeView}
-        deleteData={this.deleteData}/>;
+      paymentView = <>
+        <FindPlaces />
+        <div className="title">FAVORITE PLACES</div>
+        <Favorite
+          favorites={this.state.favorites}
+          changeView={this.changeView}
+          deleteData={this.deleteData}
+          view={this.state.view}/></>;
     } else if (this.state.view === 'wish') {
-      paymentView = <WishList
-        wishList={this.state.wishList}
-        changeView={this.changeView}
-        deleteData={this.deleteData}/>;
+      paymentView =
+      <><FindPlaces />
+        <div className="title">WISH LIST</div>
+        <WishList
+          wishList={this.state.wishList}
+          changeView={this.changeView}
+          deleteData={this.deleteData}
+          updateData={this.updateData}
+          view={this.state.view}/></>;
     } else if (this.state.view === 'login') {
       paymentView = <Login />;
     } else if (this.state.view === 'search') {
-      paymentView = <FindPlaces />;
+      paymentView = <FindPlaces view={this.state.view}/>;
     }
 
     return (
@@ -140,23 +150,30 @@ class App extends React.Component {
         { this.state.view !== 'home' ? null : <>
           <div className="main_container">
             <div>
-              <h2 className="title">CURRENT STATUS</h2>
+              <div className="title">CURRENT STATUS</div>
+              <div className='photos_title' onClick={()=> this.changeView('pay') }>&raquo; SEE SUMMARY&nbsp;
+              &nbsp;
+              </div>
               <Payment changeView={this.changeView} />
             </div>
+            <hr /> <br />
             <div>
               <div className="title">FAVORITE PLACES</div>
               <Favorite
                 favorites={this.state.favorites}
                 changeView={this.changeView}
-                deleteData={this.deleteData}/>
+                deleteData={this.deleteData}
+                view={this.state.view}/>
             </div>
-            <hr />
+            <hr /> <br />
             <div>
               <div className="title">WISH LIST</div>
               <WishList
                 wishList={this.state.wishList}
                 changeView={this.changeView}
-                deleteData={this.deleteData}/>
+                deleteData={this.deleteData}
+                updateData={this.updateData}
+                view={this.state.view}/>
             </div>
           </div></>
         }

@@ -20,16 +20,22 @@ module.exports = {
       });
   },
   put: (req, res) => {
-    console.log('favorite_Put', req.body);
+    console.log('favorite_Put', req.body.data);
+    update(req.body.data)
+      .then(()=> res.sendStatus(201))
+      .catch(( err ) => {
+        res.sendStatus(404);
+        console.error(err);
+      });
   },
   delete: (req, res) => {
     console.log('favorite_Delete', req.params.id);
-    // deleteOne(req.params.id)
-    //   .then(result => res.send(result))
-    //   .catch(err => {
-    //     res.sendStatus(404);
-    //     console.log(err);
-    //   });
+    deleteOne(req.params.id)
+      .then(result => res.send(result))
+      .catch(err => {
+        res.sendStatus(404);
+        console.log(err);
+      });
 
   }
 };

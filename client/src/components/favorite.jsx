@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Favorite({ favorites, changeView, deleteData }) {
+export default function Favorite({ favorites, changeView, deleteData, view }) {
   let favoriteCard = favorites.map( favorite => {
     return (
       <div className="responsive" key={'F' + favorite.id}>
@@ -17,14 +17,16 @@ export default function Favorite({ favorites, changeView, deleteData }) {
               {favorite.location.display_address[2]}<br />
               {favorite.display_phone}
             </small><br /><br />
-            {favorite.comment}
+            <div className="commnetText">{favorite.comment}</div>
           </div>
         </div>
       </div>);
   });
+
+  let addMore = view === 'home' && <div className='photos_title' onClick={()=> changeView('search') }>&raquo; ADD MORE</div>;
   return (
     <div>
-      <div className='photos_title' onClick={()=> changeView('search') }>&raquo; ADD MORE</div>
+      {addMore}
       <div className="wishlistContainer">
         {favoriteCard}
       </div>

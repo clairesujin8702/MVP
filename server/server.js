@@ -15,13 +15,12 @@ app.get('/search', (req, res)=>{
   console.log('GET_req.query', req.query.term);
   let placeName = req.query.term;
   let area = req.query.location || 'New York';
-  let num = req.query.limit || 3;
+  let num = req.query.limit || 10;
   let sort = req.query.sortBy || 'best_match';
   let priceLevel = req.query.price || '1,2,3,4';
 
   searchPlace( placeName, area, num, sort, priceLevel )
     .then(result =>{
-      // console.log('searchPlace_result_server.js', result);
       res.json( result );
     } )
     .catch(err => console.log(err) );

@@ -54,8 +54,36 @@ class NewBill extends React.Component {
   render() {
     let searchBar = !this.state.newBillPlace && <>
       <h2>SEARCH PLACE</h2>
-      <FindPlaces momHandleClickChange={this.handleClickChange} /></>;
+      <FindPlaces view={this.props.view} momHandleClickChange={this.handleClickChange} /></>;
     let manualBar = this.state.newBillPlace ? this.state.newBillPlace : 'Type a location to split new bill';
+
+    let temp = this.state.newBillPlace && <>
+      <div className="title_temp">
+        - Total : How much spent<br />
+        - ADD HOW MANY PEOPLE with CONTACT POINT_email,phone#<br />
+        ___: add button needed :<br />
+        - Person paid : one person or multiple ppl<br />
+        ___: VenmoId or other methods for payment<br />
+        - Pay method : split equally or unequally<br />
+        - Tax _Select_ depending on states<br />
+        - Tip _Input_ preview 15% 20%<br />
+        - Receipt : Photo upload<br />
+      </div>
+      <h4>OVERVIEW</h4>
+      <div className="title_temp">
+      - Place name : NAME<br />
+      - Paid by : NAME<br />
+      - Total : $PRICE <br />
+      ____Friend-1  owes $27 to Person who paid<br />
+      ______detail - food: $13 ,drink: $4, share Food: $3, tax:$1, tip:$4<br />
+      ____Friend-2  owes $27 to Person who paid<br />
+      ______detail - food: $13 ,drink: $4, share Food: $3, tax:$1, tip:$4<br />
+      </div><br />
+      <hr />
+      <span className="title_small">√ New bill from {this.state.newBillPlace} added</span>&nbsp;&nbsp;
+      <a href={`mailto:${this.state.emailTo}?subject=${this.state.emailTitle}%20from%20${this.state.newBillPlace}&body=${this.state.emailContent}%`}>Send email</a>
+    </>;
+
     return (
       <div className='sContainer'>
         { searchBar}
@@ -65,9 +93,8 @@ class NewBill extends React.Component {
           name="newBillPlace"
           placeholder={manualBar}
           onChange={(e) => this.handleClickChange(e)}
-          size="67" />
-        <h3>New bill from {this.state.newBillPlace} added</h3>
-        <p><a href={`mailto:${this.state.emailTo}?subject=${this.state.emailTitle}%20from%20${this.state.newBillPlace}&body=${this.state.emailContent}%`}>Send email</a></p>
+          size="67" /><br />
+        { temp }
       </div>
     );
   }

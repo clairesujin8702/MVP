@@ -5,8 +5,15 @@ export default function PlaceCard(
   { place,
     postPlace,
     comment,
+    view,
     handleClickChange,
     momHandleClickChange }) {
+
+  let SplitBillButton = view === 'new' &&
+      <><button name='newBillPlace' value={place.name}
+        onClick={(e) => momHandleClickChange(e)}>
+      Split-bill
+      </button><br /></>;
   return (
     <div className="sCard">
       <img className="sCard--image"
@@ -19,8 +26,8 @@ export default function PlaceCard(
 
         <span className="sCard--title"
           name='newBillPlace'>{place.name}
-        </span><br />
-
+        </span>&nbsp;&nbsp;&nbsp;
+<br />
         <button name='favorites'
           onClick={(e) => postPlace(e, place)}>
           Favorite
@@ -29,10 +36,7 @@ export default function PlaceCard(
           onClick={(e) => postPlace(e, place)}>
           Wish list
         </button>&nbsp;
-        <button name='newBillPlace' value={place.name}
-          onClick={(e) => momHandleClickChange(e)}>
-          Split-bill
-        </button><br />
+        {SplitBillButton}
 
         <div>
           <small>{place.categories[0].title}, for more details, visit <a href={place.url}>website</a> on Yelp</small>
