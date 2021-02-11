@@ -1,8 +1,11 @@
 import React from 'react';
 
-export default function RentList ( {list, rentHistory} ) {
-  const rentList = !rentHistory ? null : rentHistory.map((renter, i)=>{
-    return (<li> {renter.name} owes $ {renter.money} from {renter.place}_ {renter.date} </li>);
+export default function RentList({ rentHistory }) {
+  const rentList = !rentHistory ? null : rentHistory.map((renter, i) => {
+    return (<li>
+      {renter.name} owes $ {renter.money}__Paid :<input type='checkbox' checked="true" /> <br />
+      Location : {renter.place}, Date : {renter.date}<br />
+      <span className="blueLink">Delete</span>, <span className="blueLink">Detail</span> </li>);
   });
 
   return (
@@ -11,8 +14,6 @@ export default function RentList ( {list, rentHistory} ) {
       <p> Who owes me and how much? </p>
       <ol className="rentList">
         {rentList}
-        1. 'Test' owes you $ '5.00' from 'PLACE' _ 'DATE'   : √  detail delete
-        2. 'OK' owes you $ '100.00' from 'PLACE' _ 'DATE'   : √  detail delete
       </ol>
     </div>
   );

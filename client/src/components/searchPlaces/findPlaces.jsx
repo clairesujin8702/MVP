@@ -9,40 +9,41 @@ class FindPlaces extends React.Component {
       query: '',
       area: '',
       sort: '',
+      comment: '',
       priceLevel: '',
       advanceSearch: false,
       places: [
-        {
-          id: 'iJO2QE6Kosdfiipw',
-          name: 'JJ Eyelashes - Midtown',
-          image_url: 'https://source.unsplash.com/random/400x200',
-          location: { 'display_address': ['56 W 56th St', '2nd Fl', 'New York, NY 10019'] },
-          rating: '4.0',
-          price: '$$$',
-          display_phone: '(212) 244-2921',
-          categories: [{ 'title': 'Makeup Artists' }],
-          url: 'https://www.yelp.com/biz/jj-eyelashes-midtown-new-york?adjust_creative=27edtF-e9P4UROpiWw8-EA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=27edtF-e9P4UROpiWw8-EA'
-        },
-        {
-          id: 'i12e3123',
-          name: 'Envious Lashes',
-          image_url: 'https://source.unsplash.com/random/400x200', location: { 'display_address': ['56 W 56th St', '2nd Fl', 'New York, NY 10019'] },
-          rating: '4.0',
-          price: '$$$',
-          display_phone: '(212) 244-2921',
-          categories: [{ 'title': 'Makeup Artists' }],
-          url: 'http://localhost:2000/'
-        },
-        {
-          id: 'i12e3123sdfas',
-          name: 'random img',
-          image_url: 'https://source.unsplash.com/random/400x200', location: { 'display_address': ['56 W 56th St', '2nd Fl', 'New York, NY 10019'] },
-          rating: '4.0',
-          price: '$$$',
-          display_phone: '(212) 244-2921',
-          categories: [{ 'title': 'Makeup Artists' }],
-          url: 'http://localhost:2000/'
-        }
+        // {
+        //   id: 'iJO2QE6Kosdfiipw',
+        //   name: 'JJ Eyelashes - Midtown',
+        //   image_url: 'https://source.unsplash.com/random/400x200',
+        //   location: { 'display_address': ['56 W 56th St', '2nd Fl', 'New York, NY 10019'] },
+        //   rating: '4.0',
+        //   price: '$$$',
+        //   display_phone: '(212) 244-2921',
+        //   categories: [{ 'title': 'Makeup Artists' }],
+        //   url: 'https://www.yelp.com/biz/jj-eyelashes-midtown-new-york?adjust_creative=27edtF-e9P4UROpiWw8-EA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=27edtF-e9P4UROpiWw8-EA'
+        // },
+        // {
+        //   id: 'i12e3123',
+        //   name: 'Envious Lashes',
+        //   image_url: 'https://source.unsplash.com/random/400x200', location: { 'display_address': ['56 W 56th St', '2nd Fl', 'New York, NY 10019'] },
+        //   rating: '4.0',
+        //   price: '$$$',
+        //   display_phone: '(212) 244-2921',
+        //   categories: [{ 'title': 'Makeup Artists' }],
+        //   url: 'http://localhost:2000/'
+        // },
+        // {
+        //   id: 'i12e3123sdfas',
+        //   name: 'random img',
+        //   image_url: 'https://source.unsplash.com/random/400x200', location: { 'display_address': ['56 W 56th St', '2nd Fl', 'New York, NY 10019'] },
+        //   rating: '4.0',
+        //   price: '$$$',
+        //   display_phone: '(212) 244-2921',
+        //   categories: [{ 'title': 'Makeup Artists' }],
+        //   url: 'http://localhost:2000/'
+        // }
       ]
     };
     this.handleClickChange = this.handleClickChange.bind(this);
@@ -55,7 +56,7 @@ class FindPlaces extends React.Component {
     let query = { term: this.state.query, location: this.state.area, sortBy: this.state.sort, price: this.state.priceLevel };
     console.log('placeSearch_query:', query);
 
-    axios.get('/main', { params: query })
+    axios.get('/search', { params: query })
       .then(res => {
         console.log('placeSearch', res.data);
         this.setState({ places: res.data, advanceSearch: false});
@@ -66,10 +67,11 @@ class FindPlaces extends React.Component {
   postPlace(e, place) {
     e.preventDefault();
     let placeInfo = e.target.name;
+    place['comment'] = this.state.comment;
+    console.log('place', place);
 
-    console.log('placeInfo:', placeInfo);
     axios.post(`/main/${placeInfo}`, place)
-      .then(result => console.log('Saved a place ', result))
+      .then(result => console.log(`${placeInfo}place saved`))
       .catch(err => console.log(err));
   }
 
@@ -82,12 +84,12 @@ class FindPlaces extends React.Component {
   render() {
     let advancedTitle = !this.state.advanceSearch &&
     <><span className="blueLink"
-      onClick={(e) => this.handleClickChange(e, "advanceSearch", true )}>&nbsp;&nbsp;Advanced search</span><br /></>;
+      onClick={(e) => this.handleClickChange(e, 'advanceSearch', true )}>&nbsp;&nbsp;Advanced search</span><br /></>;
 
     let advanceSearchOption = this.state.advanceSearch &&
       <><h3> Advanced search </h3>
         <form className="sLabel" onSubmit={this.placeSearch}>
-        &nbsp; Sort by <select
+        Sort by <select
             name="sort"
             value={this.state.sort}
             onChange={this.handleClickChange}>
@@ -97,12 +99,12 @@ class FindPlaces extends React.Component {
             <option value='review_count'> Review </option>
             <option value='distance'> distance </option>
           </select> <br /><br />
-          &nbsp; Area&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+          Area&nbsp;&nbsp;&nbsp;&nbsp; <input
             name="area"
             value={this.state.area}
             placeholder="Brooklyn"
             onChange={this.handleClickChange} /><br /><br />
-         &nbsp; Price range <br /> <label>
+         Price range to <br /> <label>
             <input
               type='radio'
               name='priceLevel'
@@ -152,9 +154,11 @@ class FindPlaces extends React.Component {
           <div className="sCard-list">
             {this.state.places && this.state.places.map((place, i) => (
               <PlaceCard
-                key={place.id}
+                key={'P' + place.id}
                 place={place}
                 postPlace={this.postPlace}
+                comment={this.state.comment}
+                handleClickChange={this.handleClickChange}
                 momHandleClickChange={this.props.momHandleClickChange} />
             ))}
           </div>

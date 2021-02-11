@@ -35,16 +35,52 @@ body {
   margin-top: 20px;
 }
 
-.placeHolder {
+.title{
+  font-size: 23px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 10px;
+  margin-top: 25px;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 6px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 3px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: rgba(34, 25, 3, 0.75);
+}
+
+input {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  font-size: 1.0rem;
+  padding: 0.1rem 0.7rem;
+  line-height: 2.0rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* .placeHolder {
   padding: 100px;
   text-align: center;
   background: white;
   margin-top: 20px;
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom;: 20px
+  margin-bottom: 20px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
-}
+} */
 /* navbar setting */
 .navbar {
   overflow: hidden;
@@ -78,14 +114,13 @@ body {
 .column {
   float: left;
   width: 33.3%;
-  /* margin-top: 13px; */
-  margin-bottom: 13px;
   padding: 0 5px;
 }
 .pCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin-left: 4px;
   margin-right: 4px;
+  margin-bottom: 25px;
 }
 .container {
   padding: 0 13px;
@@ -103,6 +138,7 @@ body {
   color: white;
   background-color: #000;
   text-align: center;
+  font-size: 14px;
   cursor: pointer;
   width: 100%;
   border-radius: 3px;
@@ -111,7 +147,69 @@ body {
   background-color: #555;
 }
 
+.main_container {
+  /* border: 2px red; */
+  margin-left: 20px;
+  margin-right: 20px;
+}
 
+.favoriteContainer, .wishlistContainer{
+  /* border: 2px red; */
+  border: 0.5px solid rgba(160, 160, 160, 0.481);
+  padding-top: .7em;
+  padding-bottom: .7em;
+  margin-bottom: 25px;
+  overflow-x: scroll;
+  max-height: 400px;
+}
+
+.responsive {
+  /* border: 2px red; */
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+  min-width: 200px;
+}
+
+div .gallery {
+  /* border: 2px red; */
+  border: 0.5px solid rgba(160, 160, 160, 0.481);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+div .gallery:hover {
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+div .gallery img {
+  /* border: 2px red; */
+  max-width:350px;
+  max-height:300px;
+  width: 100%;
+  height: auto;
+}
+
+div .desc {
+  border: 2px red;
+  padding: 10px;
+  text-align: left;
+}
+
+.photos_title{
+  border: 2px red;
+  font-family: Arial;
+  color: #666;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: right;
+}
+
+.photos_title:hover {
+  cursor: pointer;
+  color: blue;
+}
 
 /* Responsive layout*/
 @media screen and (max-width: 700px) {
@@ -129,36 +227,18 @@ body {
   .prev,.next,.slideText {font-size: 11px}
 }
 /*____________________________________________________________________________________*/
-
-h2{
-  margin-left: 20px;
+.right{
+  text-align: right;
 }
 
 small {
   font-size: 0.8rem;
 }
 
-.newBillContainer, .borrowContainer, .rentContainer, .favoriteContainer, .wishlistContainer, .loginContainer {
-  margin-left: 20px;
+.newBillContainer, .borrowContainer,.totalContainer ,.rentContainer, .loginContainer {
+  margin-left: 25px;
 }
-/* .newBillContainer {
-  margin-left: 20px;
-}
-.borrowContainer {
-  margin-left: 20px;
-}
-.rentContainer {
-  margin-left: 20px;
-}
-.favoriteContainer {
-  margin-left: 20px;
-}
-.wishlistContainer {
-  margin-left: 20px;
-}
-.loginContainer {
-  margin-left: 20px;
-} */
+
 .sContainer {
   margin: 0 auto;
   max-width:600px;
@@ -178,10 +258,10 @@ small {
 .sInput {
   font-size: 1.0rem;
   padding: 0.1rem 0.7rem;
-  line-height: 2.8rem;
+  line-height: 2.6rem;
   border-radius: 5px;
   border: 1px solid #ddd;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .sButton {
@@ -197,11 +277,6 @@ small {
 .sButton:hover {
   background-color: rgba(34, 25, 3, 0.85);
 }
-
-/* .sTitle {
-  font-size: 1.7rem;
-  text-align: center
-} */
 
 .sCard-list {
   margin-top: 3rem;
@@ -233,19 +308,12 @@ small {
   height: auto;
 }
 
-.rentList {
-color: red;
-}
-
-.borrowList {
-  color: rgb(0, 3, 155);
-}
 .blueLink {
-  color: rgb(0, 3, 155);
+  color: rgb(5, 8, 193);
   text-decoration: underline;
   margin-top: 0%;
   margin-bottom: 0%;
-  /* text-align: right; */
 }
+
 
 
