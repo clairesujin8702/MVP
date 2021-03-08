@@ -10,18 +10,18 @@ var pSchema = mongoose.Schema({
 var Payments = mongoose.model('Payments', pSchema);
 
 const dbMethods = {
-  readAll:()=>{
-    return Payments.find().sort("date : 1").limit(20).exec()
+  readAll: ()=>{
+    return Payments.find().sort('date : 1').limit(20).exec();
   },
-  readOne:( id )=>{
-    return Payments.findOne({ paymentsId : id }).exec();
+  readOne: ( id )=>{
+    return Payments.findOne({ paymentsId: id }).exec();
   },
-  create : ( one ) => {
+  create: ( one ) => {
     return Payments.create({
 
     });
   },
-  update :( one )=>{
+  update: ( one )=>{
     return Payments.updateMany(
       {
 
@@ -33,8 +33,8 @@ const dbMethods = {
         upsert: true
       });
   },
-  deleteOne:( id )=>{
-    return Payments.deleteOne( { paymentsId : id })
+  deleteOne: ( id )=>{
+    return Payments.deleteOne( { paymentsId: id });
   },
 };
 

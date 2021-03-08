@@ -1,46 +1,297 @@
 html {
-  font-size: 10px;
+  font-size: 15px;
+}
+
+* {
   box-sizing: border-box;
 }
 
 body {
-  background-color: white;
+  background-color: rgb(242, 242, 242);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  padding: 0;
-}
-Div {
-  width: 500px;
 }
 
-h1 {
-text-align: center;
+.header {
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  background: rgb(0, 0, 0);
+}
+.header > h1 {
+  font-size: 50px;
 }
 
-p {
-  font-size: 1.6rem;
+.header > p {
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+}
+.footer {
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background: rgb(0, 0, 0);
+  margin-top: 20px;
+}
+
+.title{
+  font-size: 23px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.title_small {
+  font-size: 17px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  margin-left: 10px;
+  margin-top: 25px;
+}
+
+.title_temp {
+  font-size: 14px;
+  /* font-weight: bold; */
+  line-height: 1.6;
+  text-transform: uppercase;
+  margin-left: 10px;
+  margin-top: 25px;
+  padding-left:15px;
+}
+
+textarea {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	width: 100%;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 6px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 3px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: rgba(34, 25, 3, 0.75);
+}
+
+input {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  font-size: 1.0rem;
+  padding: 0.1rem 0.7rem;
+  line-height: 2.0rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* navbar setting */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  margin-bottom: 40px;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+.navbar a.right {
+  float: right;
+}
+.navbar a:hover {
+  background-color: rgba(216, 216, 216, 0.064);
+  color: rgb(255, 255, 255);
+}
+.navbar a.active {
+  background-color: #666;
+  color: white;
+}
+
+/* payment section */
+.column {
+  float: left;
+  width: 33.3%;
+  padding: 0 5px;
+}
+.pCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 15px;
+}
+.container {
+  padding: 0 13px;
+}
+.container::after, .row1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+.button:hover {
+  background-color: #555;
+}
+
+.main_container {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.favoriteContainer, .wishlistContainer{
+  border: 0.5px solid rgba(160, 160, 160, 0.481);
+  padding-top: .7em;
+  padding-bottom: .7em;
+  margin-bottom: 20px;
+  overflow-x: scroll;
+  max-height: 500px;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+  min-width: 200px;
+}
+
+div .gallery {
+  border: 0.5px solid rgba(160, 160, 160, 0.481);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+div .gallery:hover {
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+div .gallery img {
+  max-width:350px;
+  max-height:300px;
+  width: 100%;
+  height: auto;
+}
+
+div .desc {
+  border: 2px red;
+  padding: 10px;
+  text-align: left;
+}
+
+.photos_title{
+  font-family: Arial;
+  color: #666;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: right;
+  margin-left: 10px;
+  margin-bottom: 3px;
+}
+
+.photos_title:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+/* Responsive layout*/
+@media screen and (max-width: 700px) {
+  .row1 {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .prev,.next,.slideText {font-size: 11px}
+}
+/*__________________________________________________________*/
+.right{
+  text-align: right;
 }
 
 small {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
-.container {
+.newBillContainer, .borrowContainer,.totalContainer ,.rentContainer, .loginContainer {
+  margin-left: 25px;
+}
+
+.sContainer {
   margin: 0 auto;
-  max-width:1000px;
-  padding: 40px;
+  max-width:600px;
+  padding: 20px;
+}
+.sForm {
+  display:grid;
+  text-transform: uppercase;
 }
 
-.title {
-  font-size: 4.4rem;
-  text-align: center
+.sLabel {
+  font-size: 0.8rem;
+  margin-bottom: 0.1rem;
+  text-transform: uppercase;
 }
 
-.card-list {
-  margin-top: 4rem;
+.sInput {
+  font-size: 1.0rem;
+  padding: 0.1rem 0.7rem;
+  line-height: 2.6rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 0.8rem;
 }
 
-.card {
+.sButton {
+  background-color: rgba(34, 25, 3, 0.75);
+  color: white;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(0,0,0,0.75);
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 250ms;
+}
+.sButton:hover {
+  background-color: rgba(34, 25, 3, 0.85);
+}
+
+.sCard-list {
+  margin-top: 3rem;
+}
+
+.sCard {
   padding: 2rem 4rem;
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
@@ -48,12 +299,35 @@ small {
   background-color: white;
 }
 
-.card--title {
+.sCard--title {
+  margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  font-size: 3.2rem;
+  font-size: 1.4rem;
+  font-weight: bolder;
 }
 
-.card--image {
-  margin: 0 auto;
-  display: block
+.sCard--image {
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width:460px;
+  max-height:300px;
+  width: auto;
+  height: auto;
 }
+
+.blueLink {
+  color: rgb(0, 21, 255);
+  text-decoration: underline;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+.commnetText {
+  font-weight: 400;
+  color:rgb(15, 62, 119)
+}
+
+
+

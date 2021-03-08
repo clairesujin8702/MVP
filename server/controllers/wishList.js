@@ -2,11 +2,39 @@ const { readAll, readOne, create, update, deleteOne } = require('../../db/models
 
 module.exports = {
   get: (req, res) => {
+    console.log('wishList_Get');
+    readAll()
+      .then(result => res.json(result))
+      .catch(err => {
+        res.sendStatus(404);
+        console.log(err);
+      });
   },
   post: (req, res) => {
+    console.log('wishList_Post', req.body);
+    create(req.body)
+      .then(result => res.send(result))
+      .catch(err => {
+        res.sendStatus(404);
+        console.log(err);
+      });
   },
   put: (req, res) => {
+    console.log('wishList_Put', req.body.data);
+    update(req.body.data)
+      .then(()=> res.sendStatus(201))
+      .catch(( err ) => {
+        res.sendStatus(404);
+        console.error(err);
+      });
   },
   delete: (req, res) => {
+    console.log('wishList_Delete', req.params.id);
+    deleteOne(req.params.id)
+      .then(result => res.send(result))
+      .catch(err => {
+        res.sendStatus(404);
+        console.log(err);
+      });
   }
 };
