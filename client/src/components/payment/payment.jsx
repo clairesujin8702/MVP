@@ -11,7 +11,7 @@ export default function Payment({changeView}) {
           <div className="pCard">
             <img src="https://www.quackit.com/pix/samples/30m.jpg" alt="John" style={myStyle} />
             <div className="container">
-              <h2>ADD MORE </h2>
+              <h2>ADD </h2>
               <p><button className="button" onClick={()=>changeView('new') }> Let's do some math </button></p>
             </div>
           </div>
