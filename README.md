@@ -6,7 +6,7 @@ Overview MVP product
 +  Integrated with Yelp API to find places, save favorites with comments of the user, and save ‘to go’ wishlist.
 +  Implemented responsive CSS design for mobile optimization.
 <img src="img/mvp.gif" alt="mainGifImg" width="700"><br><br><br>
-Bill-split App _ Future development under construction :smile:<br>
+<br>
 <span>
   <img src="img/fullMain.png" alt="mainFullpage" width="350">
   <img src="img/payment.png" alt="payment" width="350">
